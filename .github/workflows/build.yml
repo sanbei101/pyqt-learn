@@ -1,0 +1,40 @@
+name: build app use Nuitka
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Install patchelf
+        run: sudo apt update && sudo apt install -y patchelf -y # 安装 patchelf 工具
+
+      - name: Compile with Nuitka
+        run: |
+          uv run python -m nuitka --onefile --enable-plugin=pyqt6 main.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyqt-calculator
+          path: main.bin

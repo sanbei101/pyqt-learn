@@ -5,6 +5,7 @@ description = "学习pyqt"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "nuitka>=2.6.2",
     "pyqt6>=6.8.0",
 ]
 
