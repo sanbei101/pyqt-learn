@@ -1,6 +1,7 @@
 name: build app use Nuitka
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -31,7 +32,7 @@ jobs:
 
       - name: Compile with Nuitka
         run: |
-          uv run python -m nuitka --onefile --enable-plugin=pyqt6 --c=yes --strip=yes main.py
+          uv run python -m nuitka --onefile --enable-plugin=pyqt6 --lto=yes --strip=yes main.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
