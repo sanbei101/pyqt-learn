@@ -1,0 +1,12 @@
+[project]
+name = "pyqt-calculator"
+version = "0.1.0"
+description = "学习pyqt"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pyqt6>=6.8.0",
+]
+
+[tool.uv]
+index-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
