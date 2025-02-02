@@ -31,7 +31,7 @@ jobs:
 
       - name: Compile with Nuitka
         run: |
-          uv run python -m nuitka --onefile --enable-plugin=pyqt6 main.py
+          uv run python -m nuitka --onefile --enable-plugin=pyqt6 --lto --strip main.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
